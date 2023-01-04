@@ -17,7 +17,7 @@ resource "tfe_workspace" "this_workspace" {
   auto_apply                = var.auto_apply_enabled
   assessments_enabled       = var.drift_detection
   global_remote_state       = var.remote_state
-  remote_state_consumer_ids = [var.consumer_ids]
+  remote_state_consumer_ids = var.consumer_ids
   speculative_enabled       = var.speculative_enabled
   terraform_version         = var.terraform_version
   working_directory         = var.working_directory
