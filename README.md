@@ -1,4 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
+
 ## Usage
 
 ```hcl
@@ -17,6 +18,8 @@ module "workspace" {
 
 }
 ```
+
+
 ## Requirements
 
 | Name | Version |
@@ -60,7 +63,7 @@ No modules.
 | <a name="input_session_remember"></a> [session\_remember](#input\_session\_remember) | Esta variable permite definir el tiempo de expiración por inactividad (la unidad es en minutos) | `number` | `20160` | no |
 | <a name="input_session_timeout"></a> [session\_timeout](#input\_session\_timeout) | Esta variable permite definir el tiempo de esperar después de la inactividad (la unidad es en minutos) | `number` | `20160` | no |
 | <a name="input_speculative_enabled"></a> [speculative\_enabled](#input\_speculative\_enabled) | Esta variable permite habilitar las planificación especulativo | `bool` | `true` | no |
-| <a name="input_terraform_version"></a> [terraform\_version](#input\_terraform\_version) | Esta variable permite definir la versión del terraform a usar en el workspace | `string` | n/a | yes |
+| <a name="input_terraform_version"></a> [terraform\_version](#input\_terraform\_version) | Esta variable permite definir la versión del terraform a usar en el workspace | `string` | `"~> 1.0.0"` | no |
 | <a name="input_token_id"></a> [token\_id](#input\_token\_id) | Esta variable, permite definir el token del provider del VCS | `string` | `"ABVASDASDASD123131ad13123"` | no |
 | <a name="input_working_directory"></a> [working\_directory](#input\_working\_directory) | Esta variable permite definir el nombre del directorio a trabajar | `string` | n/a | yes |
 | <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Esta variable permite definir el nombre del workspace | `string` | `"First_Workspace"` | no |
