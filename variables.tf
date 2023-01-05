@@ -64,6 +64,7 @@ variable "working_directory" {
 variable "terraform_version" {
   type        = string
   description = "Esta variable permite definir la versión del terraform a usar en el workspace"
+  default     = "~> 1.0.0"
 }
 variable "execution_mode" {
   type        = string
