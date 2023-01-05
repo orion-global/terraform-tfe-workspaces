@@ -1,5 +1,5 @@
 module "workspace" {
-  source              = "./terraform-tfe-workspaces"
+  source              = "../.."
   organization_name   = "orion-global"
   workspace_name      = "test_workspace"
   auto_apply_enabled  = true

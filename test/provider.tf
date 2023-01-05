@@ -10,6 +10,6 @@ terraform {
 provider "" {
   provider "tfe" {
     hostname = "app.terraform.io"
-    token    = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    token    = var.TF_API_TOKEN
   }
 }
