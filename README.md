@@ -1,25 +1,4 @@
 <!-- BEGIN_TF_DOCS -->
-
-
-## Usage
-
-```hcl
-module "workspace" {
-  source                    = "app.terraform.io/orion-global/tfe/workspace"
-  version                   = "1.0.1"
-  workspace_name            = "test_workspace"
-  organization_name         = "orion"
-  description               = "descripción del workspace"
-  execution_mode            = "remote"
-  auto_apply_enabled        = true
-  remote_state              = false
-  speculative_enabled       = true
-  terraform_version         = "1.3.7"
-  working_directory         = "prod"
-
-}
-```
-
 ## Requirements
 
 | Name | Version |
@@ -72,7 +51,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_organization_id"></a> [organization\_id](#output\_organization\_id) | n/a |
-| <a name="output_organization_name"></a> [organization\_name](#output\_organization\_name) | n/a |
-| <a name="output_workspace_name"></a> [workspace\_name](#output\_workspace\_name) | n/a |
+| <a name="output_organization_id"></a> [organization\_id](#output\_organization\_id) | Esta salida mostrará los ids o el id de la organización que crearás |
+| <a name="output_organization_name"></a> [organization\_name](#output\_organization\_name) | Esta salida mostrará los nombres o el nombre de la organización que crearás |
+| <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | Esta salida mostrará el nombre del workspace creado |
+| <a name="output_workspace_name"></a> [workspace\_name](#output\_workspace\_name) | Esta salida mostrará el nombre del workspace creado |
 <!-- END_TF_DOCS -->
