@@ -1,54 +1,78 @@
-# Repositorio plantilla para la creación de nuevos módulos de Terraform
-Este repositorio tiene como finalidad, guiar en el proceso de creación de un nuevo módulo de Terraform, brindando indicaciones así como la estructura de archivos y carpetas que se deben contener para una correcta conexión y funcionalidad.
+<!-- BEGIN_TF_DOCS -->
 
-## Uso e instalación
-Para la instalación deberá conectarse el repositorio con el registro privado de la organización de Terraform Cloud. Para ello deberá tenerse las siguientes consideraciones:
-* Usar esta plantilla para la estructura de archivos
-  * El repositorio en si mismo es el módulo.
-  * En caso emplee submódulos, estos ebdeberán cargarse en la carpeta submodules y cada uno contará con sus respectivos ejemplos.
-* Eliminar toda la información de guía desde la línea separadora hacia arriba, lo podrá identificar con el comentario "INICIO DE PLANTILLA DE DOCUMENTACIÓN" en el contenido del archivo Markdown.
-* El repositorio deberá tener la siguiente estructura en el nombre:
-  * terraform-_proveedor_-_nombre que se le dará al módulo sin guiones_
-* Para que sea funcional, deberá generar un nuevo _release_ usando _tags_ en Github
-  * Use [versiones de tipo semántica](https://semver.org/), por ejemplo: v1.0.0
-  * Para ello, ir a la página de _releases_ del repositorio ubicado en "/releases/new" y crear un nuevo _tag_
-    * Para nuevas versiones, siga la secuencia lógica de las versiones, por ejemplo: v1.0.0 > v1.0.1
-    * En el campo de título, el nombre del tag, por ejemplo: v1.0.0
-    * En el campo de descripción, indique los detalles de la nueva versión y los cambios efectuados.
-
-<!-- INICIO DE PLANTILLA DE DOCUMENTACIÓN -->
-
-# _Insertar el nombre del módulo_
-Agregar breve descripción del módulo y los recursos que creará.
 
 ## Usage
 
 ```hcl
-Agregar el uso del módulo
+module "workspace" {
+  source                    = "app.terraform.io/orion-global/tfe/workspace"
+  version                   = "1.0.1"
+  workspace_name            = "test_workspace"
+  organization_name         = "orion"
+  description               = "descripción del workspace"
+  execution_mode            = "remote"
+  auto_apply_enabled        = true
+  remote_state              = false
+  speculative_enabled       = true
+  terraform_version         = "1.3.7"
+  working_directory         = "prod"
+
+}
 ```
-
-## Examples
-
-- [Ejemplo 01](https://github.com/orion-global/terraform-module-template/tree/prod/examples/example-001): Este es un primer ejemplo
 
 ## Requirements
 
-| Name      | Version  |
-| --------- | -------- |
-| terraform | >= X.X.X |
+| Name | Version |
+|------|---------|
+| <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) | ~> 0.38.0 |
 
 ## Providers
 
-| Name | Version  |
-| ---- | -------- |
-| aws  | >= X.X.X |
+| Name | Version |
+|------|---------|
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | ~> 0.38.0 |
 
 ## Modules
 
-| Name   | Source                           | Version |
-| ------ | -------------------------------- | ------- |
-| modulo | ./modules/eks-managed-node-group | n/a     |
+No modules.
 
-## License
+## Resources
 
-MIT Licensed. See [LICENSE](https://github.com/orion-global/terraform-module-template/tree/prod/LICENSE) for full details.
+| Name | Type |
+|------|------|
+| [tfe_organization.main_organization](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/organization) | resource |
+| [tfe_workspace.this_workspace](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_agent_id"></a> [agent\_id](#input\_agent\_id) | Esta variable permite definir el agent id definido para este workspace, asimismo habilita el modo agente | `string` | `null` | no |
+| <a name="input_auto_apply_enabled"></a> [auto\_apply\_enabled](#input\_auto\_apply\_enabled) | Esta variable permite habilitar el auto apply en el workspace | `bool` | `false` | no |
+| <a name="input_branch_name"></a> [branch\_name](#input\_branch\_name) | Esta variable permite definir el nombre del branch a trabajar | `string` | n/a | yes |
+| <a name="input_consumer_ids"></a> [consumer\_ids](#input\_consumer\_ids) | Esta varible permite definir los workspaces id que permitirá compartir los remote states especificamente | `list(string)` | `null` | no |
+| <a name="input_cost_estimation"></a> [cost\_estimation](#input\_cost\_estimation) | Esta variable permite habilitar la características de cost estimation para toda la organización, para ello se debe contar con el licenciamiento adecuado | `bool` | `false` | no |
+| <a name="input_create_organization"></a> [create\_organization](#input\_create\_organization) | Esta variable permite crear una organización en Terraform Cloud | `bool` | `false` | no |
+| <a name="input_description"></a> [description](#input\_description) | Esta variable permite describir el funcionamiento de workspace | `string` | `""` | no |
+| <a name="input_drift_detection"></a> [drift\_detection](#input\_drift\_detection) | Esta variable permite habilitar la característica de drift detection para toda la organización, para ello se debe contar con el licenciamiento adecuado | `bool` | `false` | no |
+| <a name="input_email_owner"></a> [email\_owner](#input\_email\_owner) | Esta variable permite definir el correo del administrador de la organización | `string` | `"test@example.com"` | no |
+| <a name="input_execution_mode"></a> [execution\_mode](#input\_execution\_mode) | Esta variable permite definir el modo de ejecución | `string` | `"remote"` | no |
+| <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | Esta variable permite definir el nombre de la organización a crear | `string` | `"My_Organization_Terraform"` | no |
+| <a name="input_remote_state"></a> [remote\_state](#input\_remote\_state) | Esta variable permite habilitar el remote state para todos los workspaces | `bool` | `false` | no |
+| <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | Esta variable permite definir el nombre del repositorio a conectar | `string` | `"organization/repositorio"` | no |
+| <a name="input_session_remember"></a> [session\_remember](#input\_session\_remember) | Esta variable permite definir el tiempo de expiración por inactividad (la unidad es en minutos) | `number` | `20160` | no |
+| <a name="input_session_timeout"></a> [session\_timeout](#input\_session\_timeout) | Esta variable permite definir el tiempo de esperar después de la inactividad (la unidad es en minutos) | `number` | `20160` | no |
+| <a name="input_speculative_enabled"></a> [speculative\_enabled](#input\_speculative\_enabled) | Esta variable permite habilitar las planificación especulativo | `bool` | `true` | no |
+| <a name="input_terraform_version"></a> [terraform\_version](#input\_terraform\_version) | Esta variable permite definir la versión del terraform a usar en el workspace | `string` | n/a | yes |
+| <a name="input_token_id"></a> [token\_id](#input\_token\_id) | Esta variable, permite definir el token del provider del VCS | `string` | `"ABVASDASDASD123131ad13123"` | no |
+| <a name="input_working_directory"></a> [working\_directory](#input\_working\_directory) | Esta variable permite definir el nombre del directorio a trabajar | `string` | n/a | yes |
+| <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Esta variable permite definir el nombre del workspace | `string` | `"First_Workspace"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_organization_id"></a> [organization\_id](#output\_organization\_id) | n/a |
+| <a name="output_organization_name"></a> [organization\_name](#output\_organization\_name) | n/a |
+| <a name="output_workspace_name"></a> [workspace\_name](#output\_workspace\_name) | n/a |
+<!-- END_TF_DOCS -->
