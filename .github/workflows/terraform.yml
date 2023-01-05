@@ -11,6 +11,7 @@ env:
   TF_VAR_AZURE_CLIENT_ID: ${{ secrets.DEV_AZURE_CLIENT_ID }}
   TF_VAR_AZURE_CLIENT_SECRET: ${{ secrets.DEV_AZURE_CLIENT_SECRET }}
   TF_VAR_AZURE_TENANT_ID: ${{ secrets.DEV_AZURE_TENANT_ID }}
+  TF_VAR_TOKEN_ID:  ${{ secrets.TOKEN_ID }}
 
 jobs:
   plan_job:
