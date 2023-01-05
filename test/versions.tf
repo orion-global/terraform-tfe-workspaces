@@ -7,3 +7,9 @@ terraform {
     }
   }
 }
+provider "" {
+  provider "tfe" {
+    hostname = "app.terraform.io"
+    token    = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  }
+}
